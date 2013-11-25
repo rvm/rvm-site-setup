@@ -27,7 +27,13 @@ fi
 
 cp -r shared/clone releases/$release_marker &&
 cd releases/$release_marker &&
-bundle install &&
-bundle exec nanoc compile &&
-ln -nfs "$base_path/releases/$release_marker" "$base_path/current" ||
-rm -rf  "$base_path/releases/$release_marker"
+gem install --file Gemfile &&
+NOEXEC_DISABLE=1 RUBYGEMS_GEMDEPS=- nanoc compile &&
+ln -nfs "$base_path/releases/$release_marker" "$base_path/current" &&
+echo "success!" ||
+{
+  typeset result=$?
+  rm -rf  "$base_path/releases/$release_marker"
+  echo failed:$result
+  exit $result
+}
