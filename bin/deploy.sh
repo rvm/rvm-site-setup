@@ -14,7 +14,7 @@ if
   [[ -d shared/clone/.git ]]
 then
   (
-    cd shared/clone
+    builtin cd shared/clone
     git remote set-url origin $base_url
     git pull
   )
