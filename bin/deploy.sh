@@ -28,7 +28,7 @@ fi
 copy_public_from_cache()
 {
   if [[ -d shared/public-cache ]]
-  then cp -r shared/public-cache releases/$release_marker/public || return $?
+  then cp -r $base_path/shared/public-cache $base_path/releases/$release_marker/public || return $?
   fi
 }
 
