@@ -23,10 +23,19 @@ else
   git clone "$base_url" "$base_path/shared/clone"
 fi
 
+link_shared_public()
+{
+  typeset f
+  for f in "$base_path/shared/public"/*
+  do ln -nfs "$f" "$base_path/releases/$release_marker/public/" || return $?
+  done
+}
+
 cp -r "$base_path/shared/clone" "$base_path/releases/$release_marker" &&
 cd "$base_path/releases/$release_marker" &&
 gem install --file Gemfile &&
 NOEXEC_DISABLE=1 RUBYGEMS_GEMDEPS=- nanoc compile &&
+link_shared_public &&
 ln -nfs "$base_path/releases/$release_marker" "$base_path/current" &&
 echo "success!" ||
 {
