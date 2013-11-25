@@ -1,4 +1,3 @@
-rvm-site-setup
-==============
+# rvm-site-setup
 
 Setup fo rvm.io
