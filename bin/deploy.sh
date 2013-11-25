@@ -25,24 +25,10 @@ else
   git clone $base_url shared/clone
 fi
 
-copy_public_from_cache()
-{
-  if [[ -d shared/public-cache ]]
-  then cp -r $base_path/shared/public-cache $base_path/releases/$release_marker/public || return $?
-  fi
-}
-
-copy_public_to_cache()
-{
-  rsync -a $base_path/releases/$release_marker/public $base_path/shared/public-cache || return $?
-}
-
 cp -r shared/clone releases/$release_marker &&
-copy_public_from_cache &&
 cd releases/$release_marker &&
 gem install --file Gemfile &&
 NOEXEC_DISABLE=1 RUBYGEMS_GEMDEPS=- nanoc compile &&
-copy_public_to_cache &&
 ln -nfs "$base_path/releases/$release_marker" "$base_path/current" &&
 echo "success!" ||
 {
