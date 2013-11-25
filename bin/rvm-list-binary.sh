@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-base_path="/home/rvm/shared/public/binaries"
+base_path="/home/rvm/site/shared/binaries"
 base_url="https://rvm.io/binaries"
 
 cd "$base_path"
