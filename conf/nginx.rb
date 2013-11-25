@@ -14,7 +14,6 @@ server {
   sendfile on;
   tcp_nopush off;
 
-  include /etc/nginx/conf/browsers.conf;
   access_log /var/log/nginx/access.log simple;
   error_log  /var/log/nginx/error.log info;
 
