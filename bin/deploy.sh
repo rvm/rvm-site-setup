@@ -34,7 +34,7 @@ copy_public_from_cache()
 
 copy_public_to_cache()
 {
-  rsync -a releases/$release_marker/public shared/public-cache || return $?
+  rsync -a $base_path/releases/$release_marker/public $base_path/shared/public-cache || return $?
 }
 
 cp -r shared/clone releases/$release_marker &&
