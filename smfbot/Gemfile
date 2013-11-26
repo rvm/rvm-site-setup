@@ -1,0 +1,9 @@
+source "https://rubygems.org"
+#ruby=2.0.0
+#ruby-gemset=cinch
+gem "smfbot"
+gem "cinch-identify"
+gem "cinch-yaml-memo"
+gem "cinch-yaml-score"
+gem "cinch-yaml-keywords"
+gem "cinch-url-scraper"

@@ -1,0 +1,22 @@
+---
+connection:
+  :server: irc.freenode.net
+  :port: 6667
+  :nick: smf_bot
+  :delay_joins: :identified
+  :channels:
+    - "#beginrescueend"
+    - "#railsinstaller"
+    - "#rubygems-bundler"
+    - "#rvm"
+    - "#rvm-test"
+    - "#smf.sh"
+plugins:
+  "Cinch::Plugins::Identify":
+    :type: :nickserv
+    :username: "smf_bot"
+    :password: ""
+  "Cinch::Plugins::YamlMemo":
+  "Cinch::Plugins::YamlScore":
+  "Cinch::Plugins::UrlScraper":
+  "Cinch::Plugins::YamlKeywords":
