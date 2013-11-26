@@ -16,6 +16,15 @@ plugins:
     :type: :nickserv
     :username: "smf_bot"
     :password: ".password"
+  "Cinch::Plugins::Deploy":
+    :configurations:
+      - :users:
+          - mpapis
+          - travis-ci
+        :channels:
+          - '#rvm-test'
+        :trigger: '.*rvm/rvm-site.*The build (passed|was fixed).*'
+        :command: '~/site/bin/deploy.sh'
   "Cinch::Plugins::YamlMemo":
   "Cinch::Plugins::YamlScore":
   "Cinch::Plugins::UrlScraper":

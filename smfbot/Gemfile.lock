@@ -2,6 +2,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     cinch (2.0.10)
+    cinch-deploy (1.0.0)
+      cinch (~> 2)
     cinch-identify (1.5.1)
       cinch (~> 2.0)
     cinch-url-scraper (1.1.0)
@@ -9,7 +11,7 @@ GEM
       mechanize (~> 2)
     cinch-yaml-keywords (1.1.0)
       cinch (~> 2)
-    cinch-yaml-memo (1.0.0)
+    cinch-yaml-memo (1.0.1)
       cinch (~> 2)
     cinch-yaml-score (1.1.0)
       cinch (~> 2)
@@ -44,6 +46,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cinch-deploy
   cinch-identify
   cinch-url-scraper
   cinch-yaml-keywords
