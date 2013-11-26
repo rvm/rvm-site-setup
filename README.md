@@ -1,6 +1,6 @@
 # rvm-site-setup
 
-Setup fo <http://rvm.io>:
+Setup for <http://rvm.io>:
 
 ## Getting to server
 
@@ -16,6 +16,7 @@ Setup fo <http://rvm.io>:
 
 1. put password for `smf_bot` in `smfbot/.password`
 1. `rvm alias create cinch ruby-2.0.0-p353@cinch`
+1. `rvm wrapper ruby-2.0.0-p353@cinch --no-links smfbot`
 1. copy `conf/smfbot.conf` to `$HOME/.config/upstart/smfbot.conf`
 1. edit `/etc/dbus-1/system.d/Upstart.conf` and copy second section for `rvm` user
 1. start the irc bot: `initctl start smfbot`
