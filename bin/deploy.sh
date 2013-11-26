@@ -8,19 +8,26 @@ source /usr/local/rvm/scripts/rvm
 
 mkdir -p "$base_path/shared" "$base_path/releases"
 
+go()
+{
+  echo "$1"
+  shift
+  "$@" >/dev/null || return $?
+}
+
 if
   [[ -d "$base_path/shared/clone/.git" ]]
 then
   (
     builtin cd "$base_path/shared/clone"
     git remote set-url origin "$base_url"
-    git pull
+    go "downloading changes" git pull
   )
 else
   if [[ -d "$base_path/shared/clone" ]]
   then rm -rf "$base_path/shared/clone"
   fi
-  git clone "$base_url" "$base_path/shared/clone"
+  go "downloading site" git clone "$base_url" "$base_path/shared/clone"
 fi
 
 link_shared_public()
@@ -33,14 +40,14 @@ link_shared_public()
 
 cp -r "$base_path/shared/clone" "$base_path/releases/$release_marker" &&
 cd "$base_path/releases/$release_marker" &&
-gem install --file Gemfile &&
-NOEXEC_DISABLE=1 RUBYGEMS_GEMDEPS=- nanoc compile &&
+go "installing gems" gem install --file Gemfile &&
+go "compiling pages" NOEXEC_DISABLE=1 RUBYGEMS_GEMDEPS=- nanoc compile &&
 link_shared_public &&
 ln -nfs "$base_path/releases/$release_marker" "$base_path/current" &&
 echo "success!" ||
 {
   typeset result=$?
   rm -rf  "$base_path/releases/$release_marker"
-  echo failed:$result
+  echo "failed:$result"
   exit $result
 }
