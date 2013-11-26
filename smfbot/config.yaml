@@ -15,7 +15,7 @@ plugins:
   "Cinch::Plugins::Identify":
     :type: :nickserv
     :username: "smf_bot"
-    :password: ""
+    :password: ".password"
   "Cinch::Plugins::YamlMemo":
   "Cinch::Plugins::YamlScore":
   "Cinch::Plugins::UrlScraper":
