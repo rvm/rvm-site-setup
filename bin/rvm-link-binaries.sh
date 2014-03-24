@@ -5,7 +5,7 @@ base_path="/home/rvm/site/shared/public/binaries"
 function link_binaries()
 {
   typeset file path platform
-  for file in "$1"/*.tar.bz2
+  for file in "$1"/*/*.tar.bz2
   do
     platform="${file%/*}"
     platform="${platform##*/}"
