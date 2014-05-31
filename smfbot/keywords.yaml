@@ -1,19 +1,23 @@
 ---
 gist it: Please use https://gist.github.com for anything longer then 2 lines of text,
   please do not use *paste sites.
-! 'gist:': Please use https://gist.github.com for anything longer then 2 lines of
-  text, please do not use *paste sites.
-rvm-site: ! 'rvm site: https://rvm.io/ + sources: https://github.com/rvm/rvm-site/'
+'gist:': Please use https://gist.github.com for anything longer then 2 lines of text,
+  please do not use *paste sites.
+rvm-site: 'rvm site: https://rvm.io/ + sources: https://github.com/rvm/rvm-site/'
 pastebin.com: Please use https://gist.github.com for anything longer then 2 lines
   of text, please do not use *paste sites.
 pastie.org: Please use https://gist.github.com for anything longer then 2 lines of
   text, please do not use *paste sites.
 fpaste.org: Please use https://gist.github.com for anything longer then 2 lines of
   text, please do not use *paste sites.
-rvm issue: ! 'please report rvm issues here: https://github.com/wayneeseguin/rvm/issues/'
+rvm issue: 'please report rvm issues here: https://github.com/wayneeseguin/rvm/issues/'
 dpaste.com: Please use https://gist.github.com for anything longer then 2 lines of
   text, please do not use *paste sites.
-rvm site: ! 'rvm site: https://rvm.io/ + sources: https://github.com/rvm/rvm-site/'
+rvm site: 'rvm site: https://rvm.io/ + sources: https://github.com/rvm/rvm-site/'
 rvm screencast: rvm screencast -> http://screencasts.org/episodes/how-to-use-rvm
-railsinstaller site: ! '''RailsInstaller site: http://railsinstaller.org'''
-ri-site: ! '''RailsInstaller site: http://railsinstaller.org'''
+railsinstaller site: '''RailsInstaller site: http://railsinstaller.org'''
+ri-site: 'RailsInstaller site: http://railsinstaller.org'
+cmdlinegist: 'To gist from the cmdline do this: gem install gist && gist login &&
+  <cmd> | gist -t <ext> --  where <cmd> is your command and params, and <ext> is the
+  file extension Github should use like ''sh'' for shell output. See ''gist --help''
+  for more info, including multi-file gisting.'
