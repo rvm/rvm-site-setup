@@ -38,12 +38,12 @@ link_shared_public()
   done
 }
 
-#export NOEXEC_DISABLE=1
-#export RUBYGEMS_GEMDEPS=-
+export NOEXEC_DISABLE=1
+export RUBYGEMS_GEMDEPS=-
 
 cp -r "$base_path/shared/clone" "$base_path/releases/$release_marker" &&
 cd "$base_path/releases/$release_marker" &&
-go "installing gems" bundle install && # gem i -g
+go "installing gems" gem i -g &&
 go "compiling pages" nanoc compile &&
 link_shared_public &&
 ln -nfs "$base_path/releases/$release_marker" "$base_path/current" &&
