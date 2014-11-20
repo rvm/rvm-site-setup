@@ -18,5 +18,5 @@ Setup for <http://rvm.io>:
 1. `rvm alias create cinch ruby-2.0.0-p353@cinch`
 1. `rvm wrapper ruby-2.0.0-p353@cinch --no-links smfbot`
 1. copy `conf/smfbot.rc` to `/etc/init.d/smfbot`
-1. start it first: `sudo service start smfbot`
+1. start it first: `sudo service smfbot start`
 1. make it autostart later `sudo update-rc.d smfbot defaults`
