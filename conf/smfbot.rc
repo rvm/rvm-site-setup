@@ -1,0 +1,85 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:    smfbot
+# Required-Start:    $local_fs $remote_fs $network $syslog $named
+# Required-Stop:     $local_fs $remote_fs $network $syslog $named
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: starts the smfbot irc bot
+# Description:       starts the smfbot irc bot
+### END INIT INFO
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/home/rvm/.rvm/wrappers/cinch/smfbot
+NAME=smfbot
+DESC=smfbot
+
+. /lib/init/vars.sh
+. /lib/lsb/init-functions
+
+PID=/run/smfbot.pid
+SDIR=/home/rvm/site/smfbot/
+SUSR=rvm
+
+#
+# Function that starts the daemon/service
+#
+# Return
+#   0 if daemon has been started
+#   1 if daemon was already running
+#   2 if daemon could not be started
+do_start()
+{
+  start-stop-daemon --start --quiet --pidfile $PID --exec $DAEMON --chuid $SUSR --chdir $SDIR --test > /dev/null || return 1
+  start-stop-daemon --start --quiet --pidfile $PID --exec $DAEMON --chuid $SUSR --chdir $SDIR -- $DAEMON_OPTS 2>/dev/null || return 2
+}
+
+#
+# Function that stops the daemon/service
+#
+# Return
+#   0 if daemon has been stopped
+#   1 if daemon was already stopped
+#   2 if daemon could not be stopped
+#   other if a failure occurred
+do_stop()
+{
+  start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 --pidfile $PID --name $NAME
+  RETVAL="$?"
+
+  sleep 1
+  return "$RETVAL"
+}
+
+case "$1" in
+  start)
+    [ "$VERBOSE" != no ] && log_daemon_msg "Starting $DESC" "$NAME"
+    do_start
+    case "$?" in
+      0|1) [ "$VERBOSE" != no ] && log_end_msg 0 ;;
+      2) [ "$VERBOSE" != no ] && log_end_msg 1 ;;
+    esac
+    ;;
+  stop)
+    [ "$VERBOSE" != no ] && log_daemon_msg "Stopping $DESC" "$NAME"
+    do_stop
+    case "$?" in
+      0|1) [ "$VERBOSE" != no ] && log_end_msg 0 ;;
+      2) [ "$VERBOSE" != no ] && log_end_msg 1 ;;
+    esac
+    ;;
+  restart)
+    log_daemon_msg "Restarting $DESC" "$NAME"
+    $0 stop &&
+    $0 start ||
+    exit $?
+    ;;
+  status)
+    status_of_proc -p $PID "$DAEMON" "$NAME" || exit $?
+    ;;
+  *)
+    echo "Usage: $NAME {start|stop|restart|status}" >&2
+    exit 3
+    ;;
+esac
