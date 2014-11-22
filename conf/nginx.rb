@@ -32,8 +32,8 @@ server {
   server_name rvm.io *.rvm.io;
   root /home/rvm/site/current/public;
 
-  if ( -f /home/rvm/github-is-running  ) { set $get_url https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer ; }
-  if ( -f /home/rvm/github-not-running ) { set $get_url https://bitbucket.org/mpapis/rvm/raw/master/binscripts/rvm-installer    ; }
+  if ( -f /home/rvm/github-is-running  ) { set $get_url https://raw.githubusercontent.com/wayneeseguin/rvm/master/binscripts/rvm-installer ; }
+  if ( -f /home/rvm/github-not-running ) { set $get_url https://bitbucket.org/mpapis/rvm/raw/master/binscripts/rvm-installer ; }
   if ($host = get-git.rvm.io ) { rewrite ^ https://rvm.io/install/git permanent; break; }
   if ($host = get.rvm.io ) { rewrite ^ $get_url permanent ; break; }
 
