@@ -4,8 +4,15 @@ server {
   ssl_certificate     /etc/nginx/ssl/star.rvm.io.crt;
   ssl_certificate_key /etc/nginx/ssl/star.rvm.io.key;
   ssl_session_timeout 5m;
-  ssl_protocols SSLv3 TLSv1;
+  ssl_ciphers "AES256+EECDH:AES256+EDH";
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
   ssl_prefer_server_ciphers on;
+  ssl_session_cache shared:SSL:10m;
+  add_header Strict-Transport-Security "max-age=63072000; includeSubDomains";
+  add_header X-Frame-Options DENY;
+  add_header X-Content-Type-Options nosniff;
+  ssl_stapling on
+  ssl_stapling_verify on
 
   client_max_body_size 20M;
   lingering_close on;
