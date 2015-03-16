@@ -43,6 +43,7 @@ export RUBYGEMS_GEMDEPS=-
 
 cp -r "$base_path/shared/clone" "$base_path/releases/$release_marker" &&
 cd "$base_path/releases/$release_marker" &&
+source /usr/local/rvm/scripts/rvm &&
 go "installing gems" gem i -g &&
 go "compiling pages" nanoc compile &&
 link_shared_public &&
