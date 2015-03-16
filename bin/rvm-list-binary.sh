@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 base_path="/home/rvm/site/shared/public/binaries"
-base_url="https://rvm.io/binaries"
+base_url="https://rvm_io.global.ssl.fastly.net/binaries"
 
 cd "$base_path"
 
