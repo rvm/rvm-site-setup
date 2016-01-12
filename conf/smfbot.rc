@@ -32,7 +32,7 @@ SUSR=rvm
 do_start()
 {
   start-stop-daemon --start --quiet --pidfile $PID --exec $DAEMON --chuid $SUSR --chdir $SDIR --test > /dev/null || return 1
-  start-stop-daemon --start --quiet --pidfile $PID --exec $DAEMON --chuid $SUSR --chdir $SDIR -- $DAEMON_OPTS 2>/dev/null || return 2
+  start-stop-daemon --start --quiet --pidfile $PID --exec $DAEMON --chuid $SUSR --chdir $SDIR --background --make-pidfile -- $DAEMON_OPTS 2>/dev/null || return 2
 }
 
 #
