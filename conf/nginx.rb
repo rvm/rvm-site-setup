@@ -36,7 +36,7 @@ server {
   location ~ /\.well-known/acme-challenge { root /home/letsencrypt/letsencrypt; }
 
   if ($request_uri ~ /\.well-known/acme-challenge) { break; }
-  if ( -f /home/rvm/github-is-running  ) { set $get_url https://raw.githubusercontent.com/wayneeseguin/rvm/master/binscripts/rvm-installer ; }
+  if ( -f /home/rvm/github-is-running  ) { set $get_url https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer ; }
   if ( -f /home/rvm/github-not-running ) { set $get_url https://bitbucket.org/mpapis/rvm/raw/master/binscripts/rvm-installer ; }
   if ($host = get.rvm.io) { rewrite ^ $get_url permanent ; break; }
 
